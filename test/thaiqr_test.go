@@ -7,12 +7,12 @@ import (
 )
 
 func TestMerchantPromptpayQRGenerate(t *testing.T) {
-	recieveId := "0912345678"
+	receiveId := "0912345678"
 	amount := "100.00"
 	onetime := true
 
 	expectedResult := "00020101021229370016A0000006770101110113006691234567853037645406100.005802TH6304D803"
-	actualResult := thaiqr.MerchantPromptpayQRGenerate(recieveId, amount, onetime)
+	actualResult := thaiqr.MerchantPromptpayQRGenerate(receiveId, amount, onetime)
 
 	if actualResult != expectedResult {
 		t.Errorf("Unexpected result. Expected: %s, got: %s", expectedResult, actualResult)
