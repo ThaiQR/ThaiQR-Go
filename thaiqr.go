@@ -8,7 +8,7 @@ import (
 	"github.com/howeyc/crc16"
 )
 
-func MerchantPromptpayQRGenerate(recieveId, amount string, onetime bool) string {
+func MerchantPromptpayQRGenerate(receiveId, amount string, onetime bool) string {
 	PFI := preprocessValue("00", "01")
 
 	var pim_val string
@@ -21,9 +21,9 @@ func MerchantPromptpayQRGenerate(recieveId, amount string, onetime bool) string 
 
 	/** Merchant Identifier */
 	AID := preprocessValue("00", "A000000677010111")
-	recieveId = preprocessRecieveID(recieveId)
+	receiveId = preprocessReceiveID(receiveId)
 
-	merchantSum := AID + recieveId
+	merchantSum := AID + receiveId
 	merchantIdentifier := preprocessValue("29", merchantSum)
 	/* */
 
@@ -124,7 +124,7 @@ func preprocessAmount(value string) string {
 	return value
 }
 
-func preprocessRecieveID(value string) string {
+func preprocessReceiveID(value string) string {
 	if len(value) == 10 && value[0] == '0' { // Phone Number
 		value = "0066" + trimFirstRune(value)
 		value = preprocessValue("01", value)
